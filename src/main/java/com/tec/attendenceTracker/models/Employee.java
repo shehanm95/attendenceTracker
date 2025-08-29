@@ -160,13 +160,15 @@ public class Employee {
     }
 
     // Permanent and Current Address references
-    @ManyToOne
+
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "permanent_address_id")
     private Address permanentAddress;
 
-    @ManyToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "current_address_id")
     private Address currentAddress;
+
 
     private String profilePicturePath; // store image file name only
 

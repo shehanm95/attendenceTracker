@@ -170,4 +170,25 @@ public class EmployeeDTO {
     private String officialPhone;
     private String designation;
     private String department;
+
+    @Override
+    public String toString() {
+        return "EmployeeDTO{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", personalPhone='" + personalPhone + '\'' +
+                ", personalEmail='" + personalEmail + '\'' +
+                ", emergencyContactName='" + emergencyContactName + '\'' +
+                ", emergencyContactPhone='" + emergencyContactPhone + '\'' +
+                ", profilePicture=" + profilePicture +
+                ", permanentAddress=" + permanentAddress +
+                ", currentAddress=" + currentAddress +
+                ", profilePicturePath='" + profilePicturePath + '\'' +
+                ", officialEmail='" + officialEmail + '\'' +
+                ", officialPhone='" + officialPhone + '\'' +
+                ", designation='" + designation + '\'' +
+                ", department='" + department + '\'' +
+                '}';
+    }
 }

@@ -3,6 +3,8 @@ package com.tec.attendenceTracker.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tec.attendenceTracker.dto.EmployeeDTO;
 import com.tec.attendenceTracker.service.EmployeeService;
+
+import org. springframework.core.io.Resource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -42,9 +44,14 @@ public class EmployeeController {
             @RequestPart("employee") String employeeJson,
             @RequestPart(value = "profilePicture", required = false) MultipartFile profilePicture) {
 
+        System.out.println(employeeJson);
         try {
+            System.out.println(employeeJson);
             EmployeeDTO employeeDTO = objectMapper.readValue(employeeJson, EmployeeDTO.class);
+            System.out.println(employeeDTO);
             employeeDTO.setProfilePicture(profilePicture);
+
+
             EmployeeDTO created = employeeService.createEmployee(employeeDTO);
             return ResponseEntity.ok(created);
         } catch (Exception e) {
@@ -86,5 +93,12 @@ public class EmployeeController {
     public ResponseEntity<Void> deleteEmployee(@PathVariable Long id) {
         employeeService.deleteEmployee(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/images/{fileName:.+}")
+    public ResponseEntity<Resource> getImage(
+            @PathVariable String fileName) {
+
+        return employeeService.getImage(fileName);
     }
 }
